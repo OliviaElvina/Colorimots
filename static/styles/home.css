@@ -1,0 +1,169 @@
+/* Mise en place de la police */
+p, textarea, div{
+  font-family: "OpenDyslexic";
+}
+
+h1{
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Ici la colorisation du titre lettre par lettre, en reprenant les couleurs des analyses */
+#c{color: Lime;}
+#o1{color: DarkRed;}
+#l{color: DodgerBlue;}
+#o2{color: SpringGreen;}
+#r{color: #3636FF;}
+#i{color: Red;}
+#m{color: DarkGreen;}
+#o3{color: DeepPink;}
+#t{color: MediumTurquoise;}
+#s{color: Orange;}
+
+
+/* Explications */
+.explication {
+  margin: 20px;
+}
+
+/* Légende */
+.legende {
+  margin: 20px;
+}
+
+#titreLegende {
+  text-decoration: underline;
+}
+
+/* Style du tableau généré automatiquement sur https://www.tablesgenerator.com/html_tables */
+.tg  {border-collapse:collapse;border-spacing:0;border-style:solid;border-width:1px;}
+.tg td{border-style:solid;border-width:0px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-style:solid;border-width:0px;font-weight:bold;overflow:hidden;padding:10px 5px;word-break:normal;text-decoration: underline;}
+.tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+
+table {
+  margin-top: 20px;
+  table-layout: fixed;
+  width: 80%;
+}
+
+
+/* Disposition et couleurs des carrés de la légende */
+.carreCouleur {
+  display : inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: black;
+}
+
+#VSing{background-color:red;}
+#VPlur{background-color:DarkRed;}
+#VPart{background-color:orange;}
+#VInf{background-color:DeepPink;}
+#VUnk{background-color:SaddleBrown;}
+#NSingMasc{background-color:DodgerBlue;}
+#NSingFem{background-color:MediumTurquoise;}
+#NPlurMasc{background-color:#000095;}
+#NPlurFem{background-color:Teal;}
+#NUnk{background-color:DarkSlateBlue;}
+#AdjSingMasc{background-color: Lime;}
+#AdjSingFem{background-color: SpringGreen;}
+#AdjPlurMasc{background-color: DarkGreen;}
+#AdjPlurFem{background-color: #009E61;}
+#AdjUnk{background-color: OliveDrab;}
+
+
+/* Texte d'entrée */
+#titreTxt{
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-decoration: underline;
+}
+
+.textEntree {
+  width:75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* boutons */
+.btnAnalyse {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.btn {
+  margin:10px;
+}
+
+
+/* Texte de sortie */
+.textColor{
+  font-size : 25px;
+  width: 75%;
+  border: solid;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.clique {
+  cursor: pointer;
+}
+
+
+/* Partie informations */
+#outInfos {
+  font-size: 20px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: solid;
+}
+
+
+/* Images */
+#titreImg {
+  text-align: center;
+}
+
+.figImg {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#imgAdjNom {
+    max-width: 20%;
+    height: auto;
+}
+
+#imgVerbNom {
+    max-width: 25%;
+    height: auto;
+}
+
+.images {
+  border: solid;
+  width:75%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+
+/* Bas de page */
+footer{
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 30px;
+}

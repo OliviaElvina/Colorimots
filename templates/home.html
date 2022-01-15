@@ -1,0 +1,132 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colorimots</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/minty.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+  <script src="{% static 'scripts/jquery-3.6.0.min.js' %}"></script>
+
+  <!-- Chargement de la police OpenDyslexic, pas possible de le faire en CSS, car "static" n'est pas reconnu -->
+  <style>
+    @font-face {
+      font-family: "OpenDyslexic";
+      src: url("{% static 'styles/fonts/OpenDyslexic-Regular.otf' %}") format("truetype");
+    }
+  </style>
+
+</head>
+
+<body>
+  {% block content %}
+  <!-- Ajout de span pour chaque lettre pour coloriser le titre -->
+  <h1><span id="c">C</span><span id="o1">o</span><span id="l">l</span><span id="o2">o</span><span id="r">r</span><span id="i">i</span><span id="m">m</span><span id="o3">o</span><span id="t">t</span><span id="s">s</span></h1>
+
+  <div class="explication">
+    <p>Bonjour !</p>
+    <p>Tu trouveras ici un outil te permettant de coloriser les verbes, noms ou adjectifs du texte de ton choix.
+      Entre ton texte dans la zone prévue à cet effet et clique sur l'un des trois boutons (Verbes, Noms et Adjectifs).<br>
+      Après l'analyse, tu pourras cliquer sur l'un des mots colorés pour en apprendre plus.<br>
+      La légende ci-dessous t'aidera à interpréter les différentes couleurs.
+    </p>
+  </div>
+
+  <div class="legende">
+    <h4 id="titreLegende">Légende</h4>
+    <table class="tg">
+      <thead>
+        <tr>
+          <th class="tg-0pky">Verbes</th>
+          <th class="tg-0pky">Noms</th>
+          <th class="tg-0pky">Adjectifs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tg-0pky"><span id="VSing" class="carreCouleur"></span> Singulier</td>
+          <td class="tg-0pky"><span id="NSingMasc" class="carreCouleur"></span> Singulier et Masculin</td>
+          <td class="tg-0pky"><span id="AdjSingMasc" class="carreCouleur"></span> Singulier et Masculin</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky"><span id="VPlur" class="carreCouleur"></span> Pluriel</td>
+          <td class="tg-0pky"><span id="NSingFem" class="carreCouleur"></span> Singulier et Féminin</td>
+          <td class="tg-0pky"><span id="AdjSingFem" class="carreCouleur"></span> Singulier et Féminin</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky"><span id="VInf" class="carreCouleur"></span> Infinitif</td>
+          <td class="tg-0pky"><span id="NPlurMasc" class="carreCouleur"></span> Pluriel et Masculin</td>
+          <td class="tg-0pky"><span id="AdjPlurMasc" class="carreCouleur"></span> Pluriel et Masculin</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky"><span id="VPart" class="carreCouleur"></span> Participe</td>
+          <td class="tg-0pky"><span id="NPlurFem" class="carreCouleur"></span> Pluriel et Féminin</td>
+          <td class="tg-0pky"><span id="AdjPlurFem" class="carreCouleur"></span> Pluriel et Féminin</td>
+        </tr>
+        <tr>
+          <td class="tg-0pky"><span id="VUnk" class="carreCouleur"></span> Inconnu</td>
+          <td class="tg-0pky"><span id="NUnk" class="carreCouleur"></span> Inconnu</td>
+          <td class="tg-0pky"><span id="AdjUnk" class="carreCouleur"></span> Inconnu</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<hr>
+
+  <h4 id="titreTxt">Entre ton texte dans la zone ci-dessous</h4>
+
+  <div class="textEntree">
+    <textarea class="form-control" id="exampleTextarea" placeholder="Entrer le texte à analyser ici..." rows="8"></textarea>
+  </div>
+
+  <div class="btnAnalyse">
+    <button type="button" class="btn btn-secondary" id="btnVerbes" onclick="sendText('verbe')">Verbes</button>
+    <button type="button" class="btn btn-info" onclick="sendText('nom')">Noms</button>
+    <button type="button" class="btn btn-success" id="btnAdj" onclick="sendText('adjectif')">Adjectifs</button>
+  </div>
+
+  <div class="textColor">
+    <div id="outText" >Clique sur l'un des boutons d'analyse pour avoir le texte colorisé.</div>
+  </div>
+
+  <div class="infosMot">
+    <div id="outInfos">Ici tu peux trouver plus d'informations sur un un mot analysé en cliquant dessus.</div>
+  </div>
+
+  <div class="images" id="divImg1">
+    <h4 id="titreImg">Comment représenter cela ?</h4>
+    <figure class="figImg">
+        <img src="{% static 'images/Adj_Nom.jpg' %}" alt="Poule et foin" id="imgAdjNom">
+        <figcaption>Une poule noire pond des oeufs noirs, et une poule beige pond des oeufs beiges.
+          Leur couleur les lie, tout comme le nom s'accorde avec l'adjectif qui le qualifie.</figcaption>
+    </figure>
+  </div>
+
+  <div class="images" id="divImg2">
+    <h4 id="titreImg">Comment représenter cela ?</h4>
+    <figure class="figImg">
+        <img src="{% static 'images/Verb_Nom.jpg' %}" alt="Poule et foin" id="imgVerbNom">
+        <figcaption>Dans une journée, une poule doit pondre ses oeufs.
+          Elle a donc besoin de beaucoup d'énergie, c'est pour ça qu'elle mange tous les matins ce que le fermier
+          lui donne. Le verbe ne peut s'exprimer tout seul, il a besoin de se nourrir du sujet.</figcaption>
+    </figure>
+  </div>
+
+  {% endblock %}
+
+  {% block javascript %}
+    <script src="{% static 'scripts/home.js' %}"></script>
+  {% endblock %}
+
+</body>
+
+<footer>
+  <p>Analyse réalisée avec Spacy 3.0
+  <br>Mise en page avec le thème "Minty" de Bootstrap</p>
+</footer>
+
+</html>
